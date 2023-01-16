@@ -2,37 +2,65 @@ const InfoPaciencia = document.querySelector('#InfoPaciencia')
 const InfoBondade = document.querySelector('#InfoBondade')
 const InfoBravura = document.querySelector('#InfoBravura')
 const InfoJustice = document.querySelector('#InfoJustice')
+const InfoPerseverança = document.querySelector('#InfoPerseverança')
+
+const TituloUpgrade = document.querySelector('#TituloUpgrade')
+
 
 InfoPaciencia.style.display = 'none'
 InfoBondade.style.display = 'none'
 InfoBravura.style.display = 'none'
 InfoJustice.style.display = 'none'
+InfoPerseverança.style.display='none'
 
 //--------------------------------------------------------------
 const Info = document.querySelector('#Info')
 const NumerosDoContador = document.querySelector('#NumerosDoContador')
 const DeterminacaoPng = document.querySelector('#DeterminacaoPng')
+const MostreNumero = document.querySelector('.ShowClick')
 var valor = 0
+var valorDoClick = 1
 
 function CadaClick() {
     NumerosDoContador.innerHTML = ++valor
 
     if (verificarPaciencia == true) {
         NumerosDoContador.innerHTML = valor += 1
-        Info.innerHTML = "2"
-    }else if(verificarBondade == true){
+        
+    }
+    if(verificarBondade == true){
+        NumerosDoContador.innerHTML = valor += 1
+    }
+    if(verificarBravura == true){
         NumerosDoContador.innerHTML = valor += 2
-        Info.innerHTML = "3"
-    }else if(verificarBravura == true){
-        NumerosDoContador.innerHTML = valor += 4
-        Info.innerHTML = "5"
-    }else if(verificarJustice == true){
-        NumerosDoContador.innerHTML = valor += 6
-        Info.innerHTML = "7"
+    }
+    if(verificarJustice == true){
+        NumerosDoContador.innerHTML = valor += 2
+    }
+    if(verificarPerseverança == true){
+        NumerosDoContador.innerHTML = valor += 3
     }
 }
+function AnimaçãoClick() {
+        MostreNumero.style.animation = "";
+        setTimeout(() => MostreNumero.style.animation = " AnimationClickNumber .8s forwards", 5);
+        MostreNumero.innerHTML = `${valorDoClick + 0}+`
+
+        DeterminacaoPng.style.animation = ""
+        setTimeout(() => DeterminacaoPng.style.animation = " AnimationClickCoracao .1s forwards", 5);
+
+        NumerosDoContador.style.animation = ""
+        setTimeout(() => NumerosDoContador.style.animation = " AnimationContador .2s forwards", 5);
+}
+
+    verificarPaciencia = false
+    verificarJustice = false
+    verificarBravura = false
+    verificarBondade = false
+    verificarPerseverança = false
 DeterminacaoPng.addEventListener('click',CadaClick)
 DeterminacaoPng.addEventListener('click',AudioSelect)
+DeterminacaoPng.addEventListener('click',AnimaçãoClick)
 //------------------------------------------------------------- Paciencia
 
 const PreçoPaciencia = document.querySelector('#PreçoPaciencia')
@@ -46,6 +74,8 @@ function CheckAndBuyPacience() {
         Pacience.style.display = 'none'
         InfoPaciencia.style.display = 'block'
         verificarPaciencia = true
+        Info.innerHTML = `${valorDoClick += 1}`
+        MostreNumero.innerHTML = `${valorDoClick + 1}`
         
     }else{
         alert('Sem Determinação Suficiente');
@@ -65,7 +95,8 @@ function CheckAndBuyBondade() {
         Bondade.style.display = 'none'
         InfoBondade.style.display = 'block'
         verificarBondade = true
-        verificarPaciencia = false
+        Info.innerHTML = `${valorDoClick += 1}`
+        MostreNumero.innerHTML = `${valorDoClick + 1}`
 
     }else{
         alert('Sem Determinação Suficiente');
@@ -85,9 +116,8 @@ function CheckAndBuyBravura() {
         Bravura.style.display = 'none'
         InfoBravura.style.display = 'block'
         verificarBravura = true
-        verificarBondade = false
-        verificarPaciencia = false
-        
+        Info.innerHTML = `${valorDoClick += 2}`
+        MostreNumero.innerHTML = `${valorDoClick + 2}`
 
     }else{
         alert('Sem Determinação Suficiente');
@@ -108,10 +138,8 @@ function CheckAndBuyJustice() {
         Justice.style.display = 'none'
         InfoJustice.style.display = 'block'
         verificarJustice = true
-        verificarBravura = false
-        verificarBondade = false
-        verificarPaciencia = false
-        
+        Info.innerHTML = `${valorDoClick += 2}`
+        MostreNumero.innerHTML = `${valorDoClick + 2}`
 
     }else{
         alert('Sem Determinação Suficiente');
@@ -120,7 +148,28 @@ function CheckAndBuyJustice() {
 Justice.addEventListener('click', AudioSelect)
 Justice.addEventListener('click',CheckAndBuyJustice)
 //------------------------------------------------------------ Perseverança
+const PreçoPerseverança = document.querySelector('#PreçoPerseverança')
+const Perseverança = document.querySelector('#Perseverança')
+function CheckAndBuyPerseverança() {
+    if (valor > 490) {
+        alert('Perseverança Obtida');
+        NumerosDoContador.innerHTML = valor -=490
+        PreçoPerseverança.style.color = 'green'
+        PreçoPerseverança.innerHTML = 'Perseverança Obtida'
+        Perseverança.style.display = 'none'
+        InfoPerseverança.style.display = 'block'
+        verificarPerseverança = true
+        Info.innerHTML = `${valorDoClick += 3}`
+        MostreNumero.innerHTML = `${valorDoClick + 3}`
 
+    }else{
+        alert('Sem Determinação Suficiente');
+    }
+}
+
+Perseverança.addEventListener('click', AudioSelect)
+Perseverança.addEventListener('click',CheckAndBuyPerseverança)
+//---------------------------------------------------------
 
 
 
@@ -132,5 +181,13 @@ function AudioCredit() {
     const AudioCredit = document.querySelector('#AudioCredit')
     AudioCredit.play()
 }
-const TituloUpgrade = document.querySelector('#TituloUpgrade')
+
+const CaixaPaciencia = document.querySelector('#CaixaPaciencia')
+
+function Esconder() {
+    CaixaPaciencia.style.display = 'none'
+}
+
+
 TituloUpgrade.addEventListener('click',AudioCredit)
+TituloUpgrade.addEventListener('click',Esconder)
