@@ -11,6 +11,7 @@
     align-items: flex-end;
     font-family: 'Press Start 2P';
     font-size: 8px;
+    padding-left: 20px;
   }
   #Contador{
     color: rgb(255, 255, 255);
@@ -30,8 +31,54 @@
 
   #DeterminacaoPng{
     width: 100px;
-    
-
+  }
+  #PacienceComprada{
+    position: relative;
+    position:absolute;
+    width:30px;
+    bottom:420px;
+    left:570px;
+    display: none
+  }
+  #BondadeComprada{
+    position: relative;
+    position:absolute;
+    width:30px;
+    bottom:480px;
+    left:580px;
+    display: none
+  }
+  #BravuraComprada{
+    position: relative;
+    position:absolute;
+    width:30px;
+    bottom:525px;
+    left:630px;
+    display: none
+  }
+  #JusticeComprada{
+    position: relative;
+    position:absolute;
+    width:30px;
+    bottom:525px;
+    left:705px;
+    display: none
+  }
+  #PerseverançaComprada{
+    position: relative;
+    position:absolute;
+    width:30px;
+    bottom:480px;
+    left:750px;
+    display: none
+  }
+  #IntegridadeComprada{
+    position: relative;
+    position:absolute;
+    width:30px;
+    bottom:420px;
+    left:760px;
+    display: none
   }
   #Pacience,#Bondade,#Bravura,#Justice,#Perseverança,#Integridade{
     width: 50px;
@@ -73,7 +120,7 @@
     font-size: 8px;
   }
 
-  #ComoJogar,#Zerar,#TituloUpgrade{
+  #ComoJogar,#Reset,#TituloUpgrade{
     color: rgb(255, 255, 255);
     font-family: 'Press Start 2P';
     border: 3px solid rgb(255, 255, 255);
@@ -82,7 +129,7 @@
     font-size: 15px;
     text-align: center;
   }
-  #TituloUpgrade:hover,#ComoJogar:hover,#Zerar:hover{
+  #TituloUpgrade:hover,#ComoJogar:hover,#Reset:hover{
     color: rgb(255, 247, 0);
     font-family: 'Press Start 2P';
     border: 3px solid rgb(255, 247, 0);
@@ -100,17 +147,68 @@
   
   #Upgrades{
     display: flex;
-    padding-top: 190px;
+    padding-top: 185px;
     justify-content: space-around;
     align-items: flex-end;
   }
 
-  @media screen and (max-width: 600px) {
+
+
+  @media screen and (max-width: 530px) {
     #Pacience,#Bondade,#Bravura,#Justice,#Perseverança,#Integridade{
       width: 50px;
       border: 3px solid white;
       padding: 20px;
     }
+    #PacienceComprada{
+      display:flex;
+      position:absolute;
+      width:30px;
+      bottom:405px;
+      left:130px;
+      display: none
+    }
+    #BondadeComprada{
+      position: relative;
+      position:absolute;
+      width:30px;
+      bottom:465px;
+      left:140px;
+      display: none
+    }
+    #BravuraComprada{
+      position: relative;
+      position:absolute;
+      width:30px;
+      bottom:510px;
+      left:195px;
+      display: none
+    }
+    #JusticeComprada{
+      position: relative;
+      position:absolute;
+      width:30px;
+      bottom:510px;
+      left:255px;
+      display: none
+    }
+    #PerseverançaComprada{
+      position: relative;
+      position:absolute;
+      width:30px;
+      bottom:465px;
+      left:310px;
+      display: none
+    }
+    #IntegridadeComprada{
+      position: relative;
+      position:absolute;
+      width:30px;
+      bottom:405px;
+      left:325px;
+      display: none
+    }
+    
     #Upgrades{
       display: flex;
       flex-direction: column;
@@ -119,6 +217,7 @@
     }
 
     }
+    
     .ShowClick{
       color: rgb(255, 255, 255);
     font-family: 'Press Start 2P';
@@ -150,11 +249,22 @@
         filter: blur(5px)
       }
       to {
+        
         transform: translate3d(0,0,0);
         color: white;
         
       }
     }
+
+    @keyframes IdleCoracao{
+      25%{transform: rotate(-4deg);}
+      75%{transform: rotate(4deg);}
+    }
+    @keyframes IdleCaixa{
+      25%{transform: rotate(-2deg);}
+      75%{transform: rotate(2deg);}
+    }
+
     
     @keyframes AnimationContador{
       from {
@@ -164,11 +274,19 @@
       to {
         font-size: 16px;
         color: red;
+        
+      }
+    }
+    
+    @keyframes ResetAnimation{
+      from{
+        opacity:1;
+      }
+      to{
+        opacity:0;
       }
     }
 
-    #Buttons{
-      flex-direction: column;
-      justify-content: space-between;
-      
-    }
+#Fundo{
+  background-color: black
+}
